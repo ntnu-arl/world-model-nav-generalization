@@ -1,6 +1,10 @@
 # world-model-nav-generalization
 This repository contains the source code for the paper: [_**Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation**_](https://arxiv.org/abs/2606.05015).
 
+A video demonstrating the work is available [here](https://youtu.be/830cnuQ555o?si=jKiP89B6B7eEsgpN).
+
+[<img width="1280" height="720" alt="image_with_play_button" src="https://github.com/user-attachments/assets/af96bbdd-6547-4599-bea3-ce0fe00c9128" />](https://youtu.be/830cnuQ555o?si=jKiP89B6B7eEsgpN)
+
 # 🚧 Code Coming Soon!
 
 
