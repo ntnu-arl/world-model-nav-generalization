@@ -37,6 +37,8 @@ pip install -e .                                 # optional: makes `wmnav` impor
 
 `requirements.txt` includes the PPO baseline (sample-factory) and the analysis tools;
 with `pip install -e .` they are extras: `pip install -e ".[ppo,analysis]"` or `".[all]"`.
+A full step-by-step guide (Isaac Gym, aerial_gym and its source dependencies, then
+every stage of the pipeline): [docs/getting_started.md](docs/getting_started.md).
 Details, GPU memory and common pitfalls: [docs/installation.md](docs/installation.md).
 
 Check the install with the test suite (about a minute, no simulator needed):
@@ -93,6 +95,7 @@ in `scripts/reproduce/`.
 
 | doc | |
 |---|---|
+| [getting started](docs/getting_started.md) | **step-by-step: install, check, evaluate, train, reproduce** |
 | [installation](docs/installation.md) | environment, dependencies, external drive |
 | [pipeline](docs/pipeline.md) | each stage: what it does, inputs, outputs, file formats |
 | [environment](docs/environment.md) | task, observations, actions, reward, levels L1-L4 |
