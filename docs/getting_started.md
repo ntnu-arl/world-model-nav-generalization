@@ -76,7 +76,7 @@ pip install -e ~/src/aerial_gym_dev          # also installs warp-lang 0.10.1, t
 ### Step 6. Install wmnav
 
 ```bash
-git clone <wmnav repository URL> wmnav && cd wmnav
+git clone https://github.com/ntnu-arl/world-model-nav-generalization.git wmnav && cd wmnav
 pip install -r requirements.txt              # pinned dependencies, PPO and analysis included
 pip install -e .                             # optional: makes `wmnav` importable from anywhere
 ```
