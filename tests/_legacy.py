@@ -1,8 +1,8 @@
 """Helpers to import the legacy repositories for equivalence tests.
 
-Set WMNAV_LEGACY_WMS (default /home/luca/work/wms_navigation) and
-WMNAV_LEGACY_SSL (default /home/luca/work/ssl_wms); tests that need them are
-skipped when they are not present.
+Set WMNAV_LEGACY_WMS and WMNAV_LEGACY_SSL (default: ``wms_navigation`` and
+``ssl_wms`` next to this repository); tests that need them are skipped when they
+are not present.
 """
 
 import os
@@ -10,9 +10,9 @@ import sys
 import unittest
 from pathlib import Path
 
-LEGACY_WMS = Path(os.environ.get("WMNAV_LEGACY_WMS", "/home/luca/work/wms_navigation"))
-LEGACY_SSL = Path(os.environ.get("WMNAV_LEGACY_SSL", "/home/luca/work/ssl_wms"))
 REPO = Path(__file__).resolve().parents[1]
+LEGACY_WMS = Path(os.environ.get("WMNAV_LEGACY_WMS", REPO.parent / "wms_navigation"))
+LEGACY_SSL = Path(os.environ.get("WMNAV_LEGACY_SSL", REPO.parent / "ssl_wms"))
 
 
 def require_legacy_wms():

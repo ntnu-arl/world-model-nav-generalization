@@ -100,7 +100,7 @@ ssl_hardware: 128 x 64 does not fit on a 12 GB GPU (legacy code included)
 
 ssl_train_set_episodes: UNVERIFIED - not on disk
 ssl_train_set_frames: UNVERIFIED - not on disk
-ssl_train_set_note: each SSL run read path_to_data /home/luca/work/ssl_wms/datasets/ + train_folder_list ["train_env_N"] (which overrides folder_rule) + file_rule "*.pt", per the runs' .hydra/config.yaml. That directory no longer exists on this machine or on the external drive (/media/luca/hd5t). Collection used num_envs 64 and eps_train 10000, which SUGGESTS ~10k episodes / ~700k frames at the measured ~70-frame mean, but that is inferred from the collection config, not measured. Do not quote as measured.
+ssl_train_set_note: each SSL run read path_to_data <ssl_wms>/datasets/ + train_folder_list ["train_env_N"] (which overrides folder_rule) + file_rule "*.pt", per the runs' .hydra/config.yaml. That directory no longer exists. Collection used num_envs 64 and eps_train 10000, which SUGGESTS ~10k episodes / ~700k frames at the measured ~70-frame mean, but that is inferred from the collection config, not measured. Do not quote as measured.
 ssl_file_rule: "*.pt"  (as recorded by the runs; the repo's later "*_low_*.pt" belongs to the cross-validation pass)
 ssl_validation_set: eval_env_N, same directory
 

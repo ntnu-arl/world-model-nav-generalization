@@ -1,9 +1,8 @@
 # Installation
 
-Isaac Gym preview 4 supports Python 3.8 only, so wmnav targets 3.8. On the IROS26
-machine everything is already installed in the conda env `rlwms`
-(`/home/luca/miniconda3/envs/rlwms`); wmnav runs from the repository root without
-being installed.
+Isaac Gym preview 4 supports Python 3.8 only, so wmnav targets 3.8. wmnav runs from
+the repository root without being installed. Step-by-step instructions:
+[getting started](getting_started.md).
 
 ## Dependencies
 
@@ -27,8 +26,8 @@ and aerial_gym); `pip install -e .` installs wmnav itself (optional, extras `ppo
 ## Running
 
 ```bash
-conda activate rlwms            # or put $CONDA_PREFIX/bin first on PATH
-cd /home/luca/work/wmnav
+conda activate wmnav            # or put $CONDA_PREFIX/bin first on PATH
+cd /path/to/wmnav
 python -m wmnav.evaluate ...
 ```
 
@@ -48,10 +47,8 @@ python -m wmnav.evaluate ...
 ## Data and outputs
 
 Runs are written to `$WMNAV_OUTPUTS` (default `./outputs`, git-ignored) and datasets
-to `$WMNAV_DATA` (default `/media/luca/hd5t/datasets/iros26`). On the IROS26 machine
-both should point to the external drive `/media/luca/hd5t`, which also holds the
-released checkpoints and datasets of the legacy repos (see
-[checkpoints](checkpoints.md)).
+to `$WMNAV_DATA` (default `./datasets`). Point both to a disk with enough space; the
+released checkpoints are described in [checkpoints](checkpoints.md).
 
 ## GPU memory
 

@@ -5,10 +5,10 @@ python -m unittest discover -s tests -t . -v                  # all non-simulato
 WMNAV_SIM_TESTS=1 python -m unittest tests.test_env_rollout tests.test_collect   # simulator comparisons, ~5 min
 ```
 
-Tests that compare with the legacy code import it from `WMNAV_LEGACY_WMS`
-(default `/home/luca/work/wms_navigation`) and `WMNAV_LEGACY_SSL`
-(`/home/luca/work/ssl_wms`) and are skipped when those are missing; checkpoint
-tests are skipped when the external drive is not mounted. pytest is not needed
+Tests that compare with the legacy code import it from `WMNAV_LEGACY_WMS` and
+`WMNAV_LEGACY_SSL` (default: `wms_navigation` and `ssl_wms` next to this
+repository) and are skipped when those are missing; checkpoint tests are skipped
+when the released checkpoints are not available. pytest is not needed
 (stdlib `unittest`), but works if installed.
 
 | file | what it establishes |

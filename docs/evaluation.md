@@ -42,7 +42,7 @@ one with 99 %).
 
 ```bash
 python -m wmnav.imagine checkpoint=<world model or agent> \
-    data=[/media/luca/hd5t/datasets/iros26/datasets_new/eval_env_3/eval_env_3_low_freq.pt] \
+    data=[/path/to/eval_env_3_low_freq.pt] \
     context=10 min_after_context=25
 ```
 MSE and SSIM of the predicted depth over all steps, the 10 context steps (1 s) and
