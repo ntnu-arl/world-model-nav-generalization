@@ -1,0 +1,7 @@
+# Scene and simulation size. level: L1 | L2 | L3 | L4 (see wmnav/env/levels.py)
+level: L1
+num_panels: 5            # obstacle count; 5 is what every model was trained with
+num_envs: 64
+episode_len_steps: 300   # 30 s at 10 Hz
+headless: true
+device: cuda:0

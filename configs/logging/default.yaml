@@ -1,0 +1,3 @@
+wandb_mode: offline   # online | offline (sync later with `wandb sync`) | disabled
+project: wmnav
+log_every: 100        # flush metrics every N env steps (RL) or N gradient steps (SSL)

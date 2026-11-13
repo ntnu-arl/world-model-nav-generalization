@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wmnav"
+version = "1.0.0"
+description = "World-model based drone navigation: data collection, SSL pretraining, RL fine-tuning (DreamerV3), PPO baseline and evaluation"
+readme = "README.md"
+requires-python = ">=3.8,<3.9"  # Isaac Gym preview 4 supports Python 3.8 only
+dependencies = [
+    "torch==2.4.1",
+    "numpy==1.23.0",
+    "hydra-core==1.3.2",
+    "omegaconf==2.3.0",
+    "gym==0.23.1",
+    "gymnasium==0.29.1",
+    "wandb",
+    "pandas",
+    "pyyaml",
+    "gitpython",
+    "tqdm",
+]
+# Not on PyPI, install from source (see docs/installation.md):
+#   isaacgym (preview 4), aerial_gym (luca_dev @ dcd757dd), sample-factory 2.x
+
+[project.optional-dependencies]
+analysis = ["scikit-image", "matplotlib"]
+
+[tool.setuptools.packages.find]
+include = ["wmnav*"]
+
+# python -m ruff check wmnav tests scripts   (style/idiom lint; not a dependency)
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "B", "UP", "SIM", "C4", "PIE", "RET", "PERF", "ISC"]
+# Naming rules (N) are left off on purpose: aerial_gym looks up its config classes by
+# lowercase name (env, sim, physx, ...), and F / B, T follow PyTorch conventions.
+
+[tool.ruff.lint.per-file-ignores]
+"wmnav/env/patches.py" = ["RET504"]  # verbatim copies of aerial_gym methods

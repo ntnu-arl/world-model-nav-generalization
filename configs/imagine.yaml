@@ -1,0 +1,22 @@
+# Open-loop prediction quality of a world model on recorded episodes: reconstruct
+# the first `context` steps, imagine the rest from the actions, score both.
+#   python -m wmnav.imagine checkpoint=/path/agent_eval_best.pth data=[/path/eval_env_3_low_freq.pt]
+defaults:
+  - model: dreamer
+  - paths: default
+  - _self_
+
+stage: imagine
+run_name: imagine
+device: cuda:0
+checkpoint: ???
+data: ???
+context: 10                 # steps of context (1 s)
+min_after_context: 25       # skip episodes shorter than context + this
+max_episodes: null          # null = all eligible episodes
+save_predictions: false     # also write each episode's arrays (.npy)
+depth_space: legacy         # legacy: score images as depth - 0.5 (how the paper's numbers were computed); raw: true depth
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${run_name}/${now:%Y-%m-%d_%H-%M-%S}

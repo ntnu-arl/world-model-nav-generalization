@@ -1,0 +1,23 @@
+# PPO baseline on one level.
+#   python -m wmnav.train_ppo env.level=L2 env_steps=15000000
+defaults:
+  - env: default
+  - paths: default
+  - logging: default
+  - ppo/sample_factory@sample_factory
+  - _self_
+
+env:
+  num_envs: 512
+
+stage: ppo
+experiment: ppo-${env.level}
+seed: null                  # null: drawn at random (as in the paper runs; stored in config.json)
+env_steps: 15000000
+train_dir: ${paths.output_root}/ppo/train_dir
+snapshot_at: 1000000        # also keep a copy of the policy at this many frames (the WMs' budget); null to skip
+restart_behavior: resume    # resume | restart | overwrite
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${experiment}/${now:%Y-%m-%d_%H-%M-%S}

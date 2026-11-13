@@ -1,0 +1,5 @@
+# GPU settings. All off reproduces the numerics of the IROS26 runs; see
+# docs/performance.md for the measured speed-ups and what each one changes.
+tf32: false             # TF32 for matmuls (convolutions use TF32 by PyTorch default, as in the paper runs)
+cudnn_benchmark: false  # autotune convolution algorithms
+pin_memory: true        # pinned replay batches, asynchronous host->GPU copy (no numeric change)

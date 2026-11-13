@@ -1,0 +1,22 @@
+# Deterministic evaluation of a PPO experiment.
+#   python -m wmnav.eval_ppo experiment=ppo-L2 env.level=L2
+defaults:
+  - env: default
+  - paths: default
+  - logging: default
+  - ppo/sample_factory@sample_factory
+  - _self_
+
+env:
+  num_envs: 512
+
+stage: eval_ppo
+experiment: ???
+train_dir: ${paths.output_root}/ppo/train_dir
+checkpoint: latest          # latest | best (best = by mean reward, which favours hovering; see docs)
+episodes: 1000
+seed: 5
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${experiment}_${env.level}_p${env.num_panels}/${now:%Y-%m-%d_%H-%M-%S}

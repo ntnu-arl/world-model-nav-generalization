@@ -1,0 +1,24 @@
+# Deterministic evaluation of a fine-tuned agent.
+#   python -m wmnav.evaluate checkpoint=/path/best_train_win_rate.pt env.level=L3 env.num_panels=7
+defaults:
+  - model: dreamer
+  - env: default
+  - paths: default
+  - logging: default
+  - _self_
+
+env:
+  num_envs: 16                # the legacy evaluation protocol
+
+stage: evaluate
+name: ""                      # e.g. WM3; only used to name the run
+run_name: ${name}_${env.level}_p${env.num_panels}
+seed: 5
+deterministic: false          # as the legacy evaluations ran (static_env_wms.yaml)
+checkpoint: ???
+episodes: 1000
+record_trajectories: false    # store every step with the obstacle layout (clearance analysis)
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${run_name}/${now:%Y-%m-%d_%H-%M-%S}

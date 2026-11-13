@@ -1,0 +1,31 @@
+# Fine-tune a pretrained world model together with the actor-critic (DreamerV3).
+#   python -m wmnav.finetune env.level=L3 init_from=/path/ssl/agent_eval_best.pth
+defaults:
+  - model: dreamer
+  - env: default
+  - paths: default
+  - logging: default
+  - perf: default
+  - _self_
+
+stage: finetune
+run_name: ${env.level}
+seed: 5
+deterministic: true
+init_from: ???        # SSL world model: ssl_wms agent_*_best.pth or a wmnav checkpoint
+
+train:
+  batch_sz: 64          # 128 for WM1 in the paper
+  batch_length: 64
+  train_ratio: 512      # replayed frames per collected frame: one step per 8 frames at 64x64
+  pretrain: 100         # gradient steps on the first agent call
+  prefill: 2500         # random-action frames before the agent is built
+  episodes: 10000       # training episodes
+  eval_episodes: 128    # deterministic episodes before training starts
+  best_window: 64       # moving average that selects the best_* checkpoints
+  buffer_bytes: 16106127360  # 15 GiB; oldest episodes are evicted beyond it
+  model_opt: {opt: adam, lr: 1.0e-7, eps: 1.0e-8, clip: 1000.0}
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${run_name}/${now:%Y-%m-%d_%H-%M-%S}

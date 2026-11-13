@@ -1,0 +1,36 @@
+# Self-supervised world-model pretraining on collected data (no simulator).
+#   python -m wmnav.pretrain data.train=[/path/train_L3.pt] data.valid=[/path/eval_L3.pt]
+defaults:
+  - model: dreamer
+  - paths: default
+  - logging: default
+  - perf: default
+  - _self_
+
+stage: pretrain
+run_name: ssl
+seed: 20
+deterministic: false
+device: cuda:0
+
+data:
+  train: ???          # list of .pt files (ReplayBuffer format)
+  valid: ???
+  seed: 0             # sampling RNG; the IROS26 SSL runs used 0 regardless of `seed`
+
+batch_sz: 128
+batch_length: 64      # 6.4 s
+epochs: 200
+iterations: 200       # gradient steps per epoch -> 40,000 in total
+eval_iterations: 200  # validation batches per epoch
+
+optimizer:
+  opt: adamw
+  lr: 1.0e-4
+  eps: 1.0e-8
+  clip: 1000.0
+  kwargs: {weight_decay: 0.01}
+
+hydra:
+  run:
+    dir: ${paths.output_root}/${stage}/${run_name}/${now:%Y-%m-%d_%H-%M-%S}

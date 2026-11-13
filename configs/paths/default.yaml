@@ -1,0 +1,4 @@
+# Where runs and datasets go. On the IROS26 machine both live on the external
+# drive; override with the environment variables or on the command line.
+output_root: ${oc.env:WMNAV_OUTPUTS,outputs}
+data_root: ${oc.env:WMNAV_DATA,/media/luca/hd5t/datasets/iros26}

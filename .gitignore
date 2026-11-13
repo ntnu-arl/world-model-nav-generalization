@@ -1,0 +1,23 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# run outputs (point paths.output_root elsewhere, e.g. the external drive)
+outputs/
+multirun/
+wandb/
+train_dir/
+
+# data and checkpoints never go in git
+*.pt
+*.pth
+*.npy
+*.npz
+
+# editors
+.vscode/
+.idea/
+.ipynb_checkpoints/

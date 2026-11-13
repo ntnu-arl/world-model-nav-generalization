@@ -1,0 +1,89 @@
+# DreamerV3 (Hafner et al., 2023) world model and actor-critic, as configured for
+# all four IROS26 models (SSL pretraining and RL fine-tuning share these values).
+# latent.classes is 32 except for WM2 (64); when a checkpoint is loaded, the
+# latent sizes are read from its tensor shapes.
+
+# -------------------------------------------------------- latent dynamics
+latent:
+  groups: 32           # categorical latent variables
+  classes: 32          # classes per variable
+  recurrent: 1024      # GRU state size
+  hidden: 1024         # GRU input / prior and posterior MLP width
+  uniform_mix: 0.01    # share of uniform probability mixed into each categorical
+
+mlp_width: 512         # width of the reward / continuation / actor / critic MLPs
+activation: SiLU
+layer_norm: true
+
+encoder:
+  image_key: depth_image
+  vector_key: robot_state
+  activation: SiLU
+  layer_norm: true
+  channels: 16         # first conv layer; doubled at every stride-2 stage
+  kernel: 4
+  min_resolution: 4    # stop downsampling at this height
+  mlp_layers: 2
+  mlp_width: 512
+
+decoder:
+  image_key: depth_image
+  vector_key: robot_state
+  activation: SiLU
+  layer_norm: true
+  channels: 16
+  kernel: 4
+  min_resolution: 4
+  mlp_layers: 2
+  mlp_width: 512
+  out_scale: 1.0       # image: summed squared error; robot state: squared error in symlog space
+
+reward:                # two-hot over 255 symlog bins in [-20, 20]
+  layers: 2
+  out_scale: 0.0       # output layer initialised to zero
+  loss_weight: 1.0
+
+continuation:
+  layers: 2
+  # The legacy code built this head with the reward head's out_scale (0.0) while its
+  # config said 1.0; 0.0 is what every released model was initialised with.
+  out_scale: 0.0
+  loss_weight: 1.0
+
+# ----------------------------------------------------------------- losses
+kl:
+  free_nats: 1.0
+  dynamics_weight: 0.5
+  representation_weight: 0.1
+# Reconstruct `depth - 0.5`, as every released decoder was trained to
+# (wmnav/dreamer/world_model.py explains why). Set false only for models trained
+# from scratch.
+legacy_depth_target: true
+
+# ----------------------------------------------------------- actor-critic
+discount: 0.997
+return_lambda: 0.95
+imagination_horizon: 15    # 1.5 s at 10 Hz
+# Recompute the imagination in the backward pass instead of storing it: -40 % peak
+# memory of the actor-critic step, +27 % of its time, same update (tests/test_checkpointing.py).
+# Lets batch 32 (not the paper's 64) fine-tune next to the simulator on a 12 GB GPU.
+checkpoint_imagination: false
+
+actor:                     # Gaussian, tanh mean, std in [min_std, max_std]
+  layers: 2
+  min_std: 0.1
+  max_std: 1.0
+  out_scale: 1.0
+  lr: 3.0e-5
+  eps: 1.0e-5
+  grad_clip: 100.0
+  entropy_weight: 1.0e-3
+
+critic:                    # two-hot over 255 symlog bins
+  layers: 2
+  out_scale: 0.0
+  lr: 3.0e-5
+  eps: 1.0e-5
+  grad_clip: 100.0
+  ema_every: 1             # update the slow critic every this many updates...
+  ema_rate: 0.02           # ...moving it this far towards the critic
