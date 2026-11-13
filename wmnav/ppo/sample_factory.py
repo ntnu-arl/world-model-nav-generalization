@@ -40,10 +40,13 @@ class VecEnv(gym.Env):
         return {k: obs[k] for k in self.keys}
 
     def reset(self, *args, **kwargs):
+        """Reset every env; returns the PPO observations and the info dict."""
         obs, info = self.env.reset()
         return self._obs(obs), info
 
     def step(self, action):
+        """Step every env; every ``stats_every`` steps also append the episode
+        statistics to ``stats_file``."""
         obs, rew, terminated, truncated, infos = self.env.step(action)
         self._steps += 1
         if self.stats_file and self._steps % self.stats_every == 0:
@@ -54,7 +57,7 @@ class VecEnv(gym.Env):
         return self._obs(obs), rew, terminated, truncated, infos
 
     def render(self):
-        pass
+        """No rendering during PPO training."""
 
 
 def _make(full_env_name, cfg, env_config=None, render_mode: Optional[str] = None):

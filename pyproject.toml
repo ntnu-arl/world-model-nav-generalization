@@ -15,17 +15,16 @@ dependencies = [
     "omegaconf==2.3.0",
     "gym==0.23.1",
     "gymnasium==0.29.1",
-    "wandb",
-    "pandas",
-    "pyyaml",
-    "gitpython",
-    "tqdm",
+    "ninja",  # Isaac Gym compiles gymtorch on first import
+    "wandb==0.12.21",  # default logging.wandb_mode=offline; not imported when disabled
 ]
-# Not on PyPI, install from source (see docs/installation.md):
-#   isaacgym (preview 4), aerial_gym (luca_dev @ dcd757dd), sample-factory 2.x
+# Not on PyPI, install from source first (see docs/installation.md and requirements.txt):
+#   isaacgym (preview 4), aerial_gym (ntnu-arl/aerial_gym_dev, luca_dev @ dcd757dd)
 
 [project.optional-dependencies]
-analysis = ["scikit-image", "matplotlib"]
+ppo = ["sample-factory==2.1.1"]
+analysis = ["pandas==2.0.3", "scikit-image==0.20.0", "scipy==1.10.1"]
+all = ["sample-factory==2.1.1", "pandas==2.0.3", "scikit-image==0.20.0", "scipy==1.10.1"]
 
 [tool.setuptools.packages.find]
 include = ["wmnav*"]

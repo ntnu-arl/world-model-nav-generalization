@@ -11,7 +11,7 @@ def make_task_cfg(mode: str, num_envs: int, seed: int, device: str = "cuda:0", h
     """
     cam = LMF2Cfg.sensor_config.camera_config
 
-    class NavTaskCfg:
+    class NavTaskCfg:  # attribute namespace, filled in below
         pass
 
     c = NavTaskCfg

@@ -44,6 +44,7 @@ def main(cfg: DictConfig) -> None:
     rows = []
 
     def on_episodes(outcomes):
+        """Count the finished episodes and keep one row per episode."""
         counter.add(outcomes)
         rows.extend({k: float(v[i]) for k, v in outcomes.items()} for i in range(len(outcomes["wins"])))
 

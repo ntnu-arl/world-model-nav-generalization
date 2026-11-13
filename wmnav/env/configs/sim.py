@@ -10,7 +10,7 @@ THIRD_PARTY_NOTICES.md.
 class SimCfg:
     """aerial_gym simulator config (nested classes are read by name)."""
 
-    class viewer:
+    class viewer:  # viewer camera (only used when not headless)
         headless = False
         ref_env = 0
         camera_position = [-5, -5, 4]
@@ -26,14 +26,14 @@ class SimCfg:
         camera_follow_transform_local_offset = [-1.0, 0.0, 0.3]
         camera_follow_position_global_offset = [-1.0, 0.0, 0.3]
 
-    class sim:
+    class sim:  # Isaac Gym simulation parameters
         dt = 0.01                    # [s] physics step
         substeps = 1
         gravity = [0.0, 0.0, -9.81]
         up_axis = 1                  # z up
         use_gpu_pipeline = True
 
-        class physx:
+        class physx:  # PhysX solver
             num_threads = 10
             solver_type = 1          # TGS
             num_position_iterations = 4

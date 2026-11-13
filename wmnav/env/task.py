@@ -51,6 +51,7 @@ def _episode_id():
 
 
 def _uniform(low, high):
+    """Sampler filling a tensor's shape with values uniform in [low, high)."""
     def sample(tensor):
         return torch.rand_like(tensor) * (high - low) + low
     return sample
@@ -173,9 +174,11 @@ class NavigationTask(BaseTask):
         return self.num_envs
 
     def close(self):
+        """Destroy the simulator."""
         self.sim_env.delete_env()
 
     def render(self, mode="human"):
+        """Render the camera sensors (``mode`` is ignored)."""
         self.sim_env.render(render_components="sensors")
 
     def randomize_target(self, env_ids):

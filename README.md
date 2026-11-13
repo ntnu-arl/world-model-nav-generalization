@@ -19,12 +19,36 @@ baseline.
  train_ppo ───────────────────────────────────────────► eval_ppo          (baseline)
 ```
 
+## Installation
+
+wmnav needs Python 3.8 (the only version Isaac Gym preview 4 supports) and an NVIDIA GPU.
+
+```bash
+conda create -n wmnav python=3.8 && conda activate wmnav
+
+# 1. not on PyPI - install from source
+pip install -e /path/to/isaacgym/python          # Isaac Gym preview 4 (NVIDIA)
+pip install -e /path/to/aerial_gym_dev           # ntnu-arl/aerial_gym_dev, branch luca_dev @ dcd757dd
+
+# 2. everything else, pinned to the versions of the paper runs
+pip install -r requirements.txt
+pip install -e .                                 # optional: makes `wmnav` importable from anywhere
+```
+
+`requirements.txt` includes the PPO baseline (sample-factory) and the analysis tools;
+with `pip install -e .` they are extras: `pip install -e ".[ppo,analysis]"` or `".[all]"`.
+Details, GPU memory and common pitfalls: [docs/installation.md](docs/installation.md).
+
+Check the install with the test suite (about a minute, no simulator needed):
+
+```bash
+python -m unittest discover -s tests -t .   # -t . : tests/__init__.py imports Isaac Gym before torch
+```
+
 ## Quick start
 
 ```bash
-# Python 3.8 env with Isaac Gym preview 4, aerial_gym and sample-factory (docs/installation.md)
-export WMNAV_OUTPUTS=/media/luca/hd5t/neural_networks/wmnav   # where runs go
-cd wmnav
+export WMNAV_OUTPUTS=/path/to/outputs   # where runs go (default ./outputs)
 
 # evaluate a released model: WM3 on level L3 with 7 panels, 1000 episodes
 python -m wmnav.evaluate name=WM3 env.level=L3 env.num_panels=7 \

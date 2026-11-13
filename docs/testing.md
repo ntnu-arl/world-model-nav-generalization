@@ -1,7 +1,7 @@
 # Testing
 
 ```bash
-python -m unittest discover -s tests -v                       # all non-simulator tests, ~1 min
+python -m unittest discover -s tests -t . -v                  # all non-simulator tests, ~1 min
 WMNAV_SIM_TESTS=1 python -m unittest tests.test_env_rollout tests.test_collect   # simulator comparisons, ~5 min
 ```
 

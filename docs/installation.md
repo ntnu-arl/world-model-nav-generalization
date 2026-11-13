@@ -20,7 +20,9 @@ being installed.
 | wandb | 0.12.21 | optional (`logging.wandb_mode=disabled`) |
 | scikit-image, scipy, pandas | | analysis |
 
-`pip install -e .` installs wmnav itself (optional).
+`pip install -r requirements.txt` installs the pinned PyPI dependencies (after Isaac Gym
+and aerial_gym); `pip install -e .` installs wmnav itself (optional, extras `ppo`,
+`analysis`, `all`).
 
 ## Running
 
@@ -61,7 +63,7 @@ paper's batch size (64 x 64) needs ~12 GB more, SSL at 128 x 64 does not fit in
 ## Tests
 
 ```bash
-python -m unittest discover -s tests -v                      # ~1 min
+python -m unittest discover -s tests -t . -v                 # ~1 min
 WMNAV_SIM_TESTS=1 python -m unittest tests.test_env_rollout  # simulator, ~2 min
 ```
 Equivalence tests import the legacy repos (`WMNAV_LEGACY_WMS`, `WMNAV_LEGACY_SSL`)

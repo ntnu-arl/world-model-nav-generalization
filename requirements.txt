@@ -1,0 +1,30 @@
+# wmnav dependencies - Python 3.8 (Isaac Gym preview 4 supports Python 3.8 only).
+# Versions are the ones the IROS26 experiments ran with.
+#
+# Install these two from source first (they are not on PyPI); see docs/installation.md:
+#   Isaac Gym preview 4   (NVIDIA)                               pip install -e <isaacgym>/python
+#   aerial_gym            ntnu-arl/aerial_gym_dev, branch luca_dev @ dcd757dd   pip install -e <aerial_gym_dev>
+# then:  pip install -r requirements.txt
+#
+# torch: the default PyPI wheel is built for CUDA 12.1; for another CUDA version use
+#   pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/<cu118|cu121|cu124>
+
+torch==2.4.1
+numpy==1.23.0
+hydra-core==1.3.2
+omegaconf==2.3.0
+gym==0.23.1
+gymnasium==0.29.1
+ninja==1.11.1.3          # Isaac Gym compiles gymtorch on first import
+
+# PPO baseline (wmnav.train_ppo, wmnav.eval_ppo)
+sample-factory==2.1.1
+
+# logging: runs default to logging.wandb_mode=offline (no account needed);
+# with logging.wandb_mode=disabled wandb is not imported at all
+wandb==0.12.21
+
+# analysis (wmnav.analysis: tables, open-loop prediction metrics, clearance)
+pandas==2.0.3
+scikit-image==0.20.0
+scipy==1.10.1

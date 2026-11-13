@@ -65,6 +65,8 @@ def finetune(cfg: DictConfig, run_dir: Path, seed: int, logger: RunLogger) -> di
     agent.load(cfg.init_from, world_model_only=True)
 
     def saver(tracker, phase):
+        """Callback that feeds finished episodes to ``tracker`` and, once its window is
+        full, logs the ``phase`` means and saves a checkpoint on a new best."""
         def on_episodes(outcomes):
             res = tracker.add(outcomes)
             if not res["full"]:
@@ -82,6 +84,7 @@ def finetune(cfg: DictConfig, run_dir: Path, seed: int, logger: RunLogger) -> di
     on_eval = saver(eval_best, "eval")
 
     def on_eval_episodes(outcomes):
+        """Best-checkpoint tracking plus the counts of the initial evaluation."""
         on_eval(outcomes)
         eval_counter.add(outcomes)
 
@@ -94,6 +97,7 @@ def finetune(cfg: DictConfig, run_dir: Path, seed: int, logger: RunLogger) -> di
     last_logged = 0
 
     def on_step(frames):
+        """Log the training metrics every ``logging.log_every`` env steps."""
         nonlocal last_logged
         env_steps = frames // env.num_envs
         if env_steps - last_logged >= cfg.logging.log_every:
