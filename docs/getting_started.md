@@ -2,7 +2,7 @@
 
 This guide goes from an empty machine to evaluating a released model, training the
 full pipeline and the PPO baseline. Every command is run from the repository root.
-The versions are those of the IROS26 runs; the reference doc for each topic is linked
+The versions are those of the paper's runs; the reference doc for each topic is linked
 at the end of each step.
 
 **You need:** Linux (x86-64), an NVIDIA GPU with a recent driver, conda, git.

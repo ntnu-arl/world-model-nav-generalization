@@ -6,7 +6,7 @@ A video demonstrating the work is available [here](https://youtu.be/830cnuQ555o?
 [<img width="1280" height="720" alt="image_with_play_button" src="https://github.com/user-attachments/assets/af96bbdd-6547-4599-bea3-ce0fe00c9128" />](https://youtu.be/830cnuQ555o?si=jKiP89B6B7eEsgpN)
 
 World-model based drone navigation in [Aerial Gym](https://github.com/ntnu-arl/aerial_gym_simulator):
-the code behind the IROS26 experiments, merged from `wms_navigation` (data collection,
+the code behind the paper's experiments, merged from `wms_navigation` (data collection,
 RL fine-tuning, PPO baseline, evaluation) and `ssl_wms` (self-supervised world-model
 pretraining) into one package, with one implementation of every component.
 
@@ -116,7 +116,7 @@ in `scripts/reproduce/`.
 
 ## Relationship to the paper runs
 
-Default configurations are the as-run settings of the IROS26 experiments, and the
+Default configurations are the as-run settings of the paper's experiments, and the
 code computes what the legacy code computed: the test suite checks the port against
 the legacy repositories (identical initialisation, losses, updates, replay batches,
 environment rollouts) and every released checkpoint loads strictly. Evaluating the

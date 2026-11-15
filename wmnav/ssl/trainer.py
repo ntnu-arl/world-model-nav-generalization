@@ -1,6 +1,6 @@
 """Self-supervised world-model pretraining on recorded episodes.
 
-The loop of the IROS26 models (``TrainerSSL.wtrain`` in ssl_wms): ``epochs`` x
+The loop of the paper's models (``TrainerSSL.wtrain`` in ssl_wms): ``epochs`` x
 ``iterations`` gradient steps, each on a fresh (batch_sz, batch_length) batch
 sampled from the training episodes; after every epoch, ``eval_iterations``
 validation batches. The objective is the full world-model loss (image, robot

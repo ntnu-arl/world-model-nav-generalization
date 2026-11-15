@@ -1,6 +1,6 @@
 """Exploration policies used to collect the SSL datasets.
 
-Two policies produced the IROS26 data (the dataset file names call them
+Two policies produced the paper's data (the dataset file names call them
 ``low_freq`` and ``high_freq``; both are recorded at 10 Hz - the names refer to
 how fast the *actions* change, not to the sampling rate):
 

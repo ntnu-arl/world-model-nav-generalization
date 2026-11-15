@@ -92,7 +92,7 @@ released PPO checkpoints are renamed by a load hook of the PPO encoder.
 
 ### Options removed with the rewrite
 
-No IROS26 model used them: Gaussian latents (`dyn_discrete: 0`), `dyn_rec_depth`
+No model of the paper used them: Gaussian latents (`dyn_discrete: 0`), `dyn_rec_depth`
 > 1, a zero initial state (`initial: zeros`), REINFORCE actor gradients
 (`imag_gradient`), acting from the latent mean (`eval_state_mean`), heads without
 gradients (`grad_heads`), symlog encoder inputs, and the alternative output
@@ -101,7 +101,7 @@ refused when loaded rather than silently changed.
 
 ## Dropped
 
-Code that no IROS26 experiment used: dynamic obstacles and trajectory generators,
+Code that no experiment of the paper used: dynamic obstacles and trajectory generators,
 the other observation layouts (`unit vector`, `L1 distance`, `pos unit vector`),
 the other tasks (`position_setpoint`, `procedural_world`, the old `static_env`
 variants), panels/trees/objects/thin assets, the VAE, world-model-in-the-loop PPO

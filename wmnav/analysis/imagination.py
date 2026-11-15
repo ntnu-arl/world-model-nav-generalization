@@ -1,4 +1,4 @@
-"""Open-loop prediction metrics, as computed for the IROS26 SSL figures.
+"""Open-loop prediction metrics, as computed for the paper's SSL figures.
 
 For each episode, ``WorldModel.video_pred`` reconstructs the first ``context``
 steps and imagines the rest from the recorded actions. Image error is reported

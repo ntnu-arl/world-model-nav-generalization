@@ -1,4 +1,4 @@
-# Paper parameters (IROS26)
+# Paper parameters
 
 Every number of the paper's setup, read off the legacy configs and the run
 artefacts (resolved W&B configs, Hydra records, checkpoints, datasets). `source`

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Exploration datasets for SSL pretraining, for each level and both policies
-# (the IROS26 *_low_freq / *_high_freq files). The original training sets are
+# (the paper's *_low_freq / *_high_freq files). The original training sets are
 # lost; this regenerates data of the same kind, not the same files.
 #
 #   EPISODES=10000 ./scripts/reproduce/collect_datasets.sh L3

@@ -1,6 +1,6 @@
 """Fine-tune a pretrained world model with the actor-critic (``configs/finetune.yaml``).
 
-Order of the IROS26 runs: prefill the replay buffer with random actions; build the
+Order of the paper's runs: prefill the replay buffer with random actions; build the
 agent and load the SSL world model (the actor-critic starts from scratch); one
 deterministic evaluation of ``eval_episodes`` episodes; then ``episodes`` training
 episodes, gradient steps interleaved with acting. ``best_train_win_rate.pt`` -

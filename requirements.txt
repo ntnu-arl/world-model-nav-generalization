@@ -1,5 +1,5 @@
 # wmnav dependencies - Python 3.8 (Isaac Gym preview 4 supports Python 3.8 only).
-# Versions are the ones the IROS26 experiments ran with.
+# Versions are the ones the paper's experiments ran with.
 #
 # Install these two from source first (they are not on PyPI); see docs/installation.md:
 #   Isaac Gym preview 4   (NVIDIA)                               pip install -e <isaacgym>/python

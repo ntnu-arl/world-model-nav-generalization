@@ -1,4 +1,4 @@
-"""Obstacle-placement levels L1-L4 of the IROS26 experiments.
+"""Obstacle-placement levels L1-L4 of the paper's experiments.
 
 The levels differ in how the panels are *placed*, not in how many there are:
 

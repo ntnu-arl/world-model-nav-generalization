@@ -1,4 +1,4 @@
-"""LMF2 quadrotor with the forward depth camera, as flown in the IROS26 experiments.
+"""LMF2 quadrotor with the forward depth camera, as flown in the paper's experiments.
 
 Controller gains (``lmf2_velocity_control``) are aerial_gym's own
 ``lmf2_controller_config``: randomised uniformly per episode within its ranges.

@@ -8,7 +8,7 @@ export PYTHONUNBUFFERED=1
 REPO=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 cd "$REPO"
 
-# The released IROS26 checkpoints, by paper name. LEGACY_FT / LEGACY_SSL default to
+# The released checkpoints, by paper name. LEGACY_FT / LEGACY_SSL default to
 # the legacy repos' output folders checked out next to this repository.
 LEGACY_FT=${LEGACY_FT:-$REPO/../wms_navigation/outputs/iros26/new_dataset}
 declare -A FINETUNED=(

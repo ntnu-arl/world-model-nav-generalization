@@ -11,7 +11,7 @@ from wmnav.data.exploration import ExplorationPolicy
 
 def legacy_high_freq_get_action(actor, depth):
     """MultiStrategyActor.get_action as run for the *_high_freq datasets
-    (reconstructed from the git diff stored with the IROS26 runs)."""
+    (reconstructed from the git diff stored with the paper's runs)."""
     high_freq_idx = actor.group_size
     actions = torch.zeros((actor.num_envs, 4), device=actor.device)
     idx_uni = actor.indices[:high_freq_idx]

@@ -1,6 +1,6 @@
 # Performance
 
-Measured on the IROS26 laptop (RTX 3500 Ada Laptop, 12 GB; Python 3.8, torch 2.4.1).
+Measured on the laptop used for the paper (RTX 3500 Ada Laptop, 12 GB; Python 3.8, torch 2.4.1).
 
 ## Where the time goes
 

@@ -12,7 +12,7 @@ seed: 5
 deterministic: true
 policy: safe_explore     # safe_explore ("low_freq" files) | uniform_biased ("high_freq" files)
 episodes: 10000          # finished episodes kept (shorter ones are dropped and do not count)
-min_length: 50           # drop finished episodes of <= 50 steps (5 s), as the IROS26 data did
+min_length: 50           # drop finished episodes of <= 50 steps (5 s), as the paper's data did
 buffer_bytes: 1099511627776  # no eviction during collection
 output: ${paths.data_root}/collected/${env.level}_${policy}_${now:%Y%m%d-%H%M%S}.pt
 

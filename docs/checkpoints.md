@@ -36,7 +36,7 @@ agent.load(path)                         # agent checkpoint
 agent.load(ssl_path, world_model_only=True)   # SSL world model, fresh actor-critic
 ```
 
-## Released IROS26 checkpoints
+## Released checkpoints
 
 On the external drive (paths through the legacy repos' `outputs` symlinks):
 

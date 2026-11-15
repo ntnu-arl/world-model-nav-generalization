@@ -1,7 +1,7 @@
 """Run directories, git provenance and the metric sink shared by every entry point.
 
 Every run records the exact code it ran (commit, ``git diff`` against it, and the
-list of untracked files) next to its checkpoints. The SSL runs of the IROS26 paper
+list of untracked files) next to its checkpoints. The SSL runs of the paper
 recorded this only in W&B; when the W&B files were lost so was the code state.
 """
 

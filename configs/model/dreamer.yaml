@@ -1,5 +1,5 @@
 # DreamerV3 (Hafner et al., 2023) world model and actor-critic, as configured for
-# all four IROS26 models (SSL pretraining and RL fine-tuning share these values).
+# all four models of the paper (SSL pretraining and RL fine-tuning share these values).
 # latent.classes is 32 except for WM2 (64); when a checkpoint is loaded, the
 # latent sizes are read from its tensor shapes.
 

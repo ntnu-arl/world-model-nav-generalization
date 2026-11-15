@@ -1,4 +1,4 @@
-# sample-factory hyperparameters of the IROS26 PPO baseline (static_env_ppo.yaml)
+# sample-factory hyperparameters of the paper's PPO baseline (static_env_ppo.yaml)
 algo: PPO
 batched_sampling: true
 num_workers: 1

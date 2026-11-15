@@ -16,7 +16,7 @@ device: cuda:0
 data:
   train: ???          # list of .pt files (ReplayBuffer format)
   valid: ???
-  seed: 0             # sampling RNG; the IROS26 SSL runs used 0 regardless of `seed`
+  seed: 0             # sampling RNG; the paper's SSL runs used 0 regardless of `seed`
 
 batch_sz: 128
 batch_length: 64      # 6.4 s
