@@ -1,5 +1,5 @@
 # flying-on-imagination
-This repository contains the source code for the paper: [_**Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation**_](https://arxiv.org/abs/2606.05015).
+This repository contains the source code for the paper: [_**Flying on Imagination: DreamerV3-Style World Models under Environment Distribution Shift for Quadrotor Navigation**_](https://arxiv.org/abs/2606.05015).
 
 A video demonstrating the work is available [here](https://youtu.be/830cnuQ555o?si=jKiP89B6B7eEsgpN).
 
@@ -142,11 +142,11 @@ its license is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 If you use or reference this work in your research, please cite the following paper:
 
-L. Zanatta, G. Malczyk and K. Alexis, "Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation"
+L. Zanatta, G. Malczyk and K. Alexis, "Flying on Imagination: DreamerV3-Style World Models under Environment Distribution Shift for Quadrotor Navigation"
 
 ```bibtex
-@article{zanatta2026generalization,
-  title={Generalization of World Models under Environmental Variability for Vision-based Quadrotor Navigation},
+@article{zanatta2026flying,
+  title={Flying on Imagination: DreamerV3-Style World Models under Environment Distribution Shift for Quadrotor Navigation},
   author={Zanatta, Luca and Malczyk, Grzegorz and Alexis, Kostas},
   journal={arXiv preprint arXiv:2606.05015},
   year={2026}
